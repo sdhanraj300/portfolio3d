@@ -1,0 +1,8 @@
+This is a placeholder for the Inter-Bold font. In a real application, you would download the actual Inter font files (Inter-Bold.ttf) from Google Fonts or another source and place them in the public/fonts directory.
+
+For development purposes, you can use the following steps:
+1. Download the Inter font family from https://fonts.google.com/specimen/Inter
+2. Extract the downloaded zip file
+3. Copy the Inter-Bold.ttf file to the public/fonts directory
+
+For production, consider using a font loading strategy or a CDN to serve the font files efficiently.
