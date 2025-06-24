@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import BlurText from './BlurText';
 
 export default function Contact() {
   return (
@@ -14,12 +15,17 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent inline-block">
-            Get In Touch
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 inline-block">
+            <BlurText 
+              text="Get In Touch"
+              className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text"
+              animateBy="letters"
+              delay={100}
+            />
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-4"></div>
           <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? 
+            Have a project in mind or want to discuss potential opportunities?
             Feel free to reach out to me through any of the following channels.
           </p>
         </motion.div>
@@ -37,8 +43,8 @@ export default function Contact() {
                 <Mail className="text-blue-400" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-2">Email Me</h3>
-              <a 
-                href="mailto:dhanraj02025@gmail.com" 
+              <a
+                href="mailto:dhanraj02025@gmail.com"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
                 dhanraj02025@gmail.com
@@ -50,8 +56,8 @@ export default function Contact() {
                 <Phone className="text-purple-400" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-2">Call Me</h3>
-              <a 
-                href="tel:+916386196872" 
+              <a
+                href="tel:+916386196872"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
                 +91 63861 96872

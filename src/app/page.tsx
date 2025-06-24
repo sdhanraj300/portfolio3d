@@ -1,10 +1,8 @@
 'use client';
-
 import { useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
-// Dynamically import components with no SSR
+import Aurora from '@/components/Aurora';
 const Scene = dynamic(() => import('@/components/Scene'), { ssr: false });
 const Navigation = dynamic(() => import('@/components/Navigation'), { ssr: false });
 const Hero = dynamic(() => import('@/components/Hero'), { ssr: false });
@@ -25,12 +23,13 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white" ref={targetRef}>
       {/* 3D Background Scene */}
+      <Aurora colorStops={["#5227FF", "#7cff67", "#5227FF"]} amplitude={5.0} blend={0.5} speed={2} />
       <div className="fixed inset-0 -z-10">
         <Scene />
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center z-50"
         style={{ opacity }}
       >
@@ -38,7 +37,7 @@ export default function Home() {
       </motion.div>
 
       <Navigation />
-      
+
       <main className="relative z-10">
         <Hero />
         <About />

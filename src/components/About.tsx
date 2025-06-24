@@ -1,135 +1,18 @@
 'use client';
-
-import React, { Suspense, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Cpu, Layout, Database, Server, Globe, CpuIcon, Code2 } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { Canvas } from '@react-three/fiber';
+import { Globe, Briefcase, CpuIcon, GraduationCap, HammerIcon } from 'lucide-react';
+import { skills } from '@/constants/skills';
+import { experiences } from '@/constants/experience';
+import { education } from '@/constants/education';
+import BlurText from '@/components/BlurText';
+import GlareHover from './GlareHover';
+import SplitText from './SplitText';
 
-// Dynamically import 3D components with SSR disabled
-const SkillOrbit = dynamic(
-  () => import('./3d/SkillOrbit').then((mod) => mod.default),
-  { ssr: false, loading: () => <div className="w-full h-96 bg-gray-900/50 rounded-2xl" /> }
-);
-
-const FloatingCard = dynamic(
-  () => import('./3d/FloatingCard').then((mod) => mod.default),
-  { ssr: false }
-);
-
-type Skill = {
-  name: string;
-  level: number;
-  icon: React.ReactNode;
-  category: 'frontend' | 'backend' | 'other'
-};
-
-const skills: Skill[] = [
-  {
-    name: 'Next.js',
-    level: 90,
-    icon: <Layout className="w-6 h-6" />,
-    category: 'frontend'
-  },
-  {
-    name: 'React',
-    level: 92,
-    icon: <Code className="w-6 h-6" />,
-    category: 'frontend'
-  },
-  {
-    name: 'Node.js',
-    level: 88,
-    icon: <Server className="w-6 h-6" />,
-    category: 'backend'
-  },
-  {
-    name: 'MongoDB',
-    level: 85,
-    icon: <Database className="w-6 h-6" />,
-    category: 'backend'
-  },
-  {
-    name: 'SQL',
-    level: 85,
-    icon: <Database className="w-6 h-6" />,
-    category: 'backend'
-  },
-  {
-    name: 'Prisma',
-    level: 88,
-    icon: <Cpu className="w-6 h-6" />,
-    category: 'backend'
-  },
-  {
-    name: 'Java',
-    level: 82,
-    icon: <Code2 className="w-6 h-6" />,
-    category: 'other'
-  },
-  {
-    name: 'DSA',
-    level: 90,
-    icon: <CpuIcon className="w-6 h-6" />,
-    category: 'other'
-  },
-  {
-    name: 'Python',
-    level: 80,
-    icon: <Code2 className="w-6 h-6" />,
-    category: 'other'
-  },
-  {
-    name: 'C++',
-    level: 75,
-    icon: <Code2 className="w-6 h-6" />,
-    category: 'other'
-  },
-  {
-    name: 'JavaScript',
-    level: 95,
-    icon: <Code className="w-6 h-6" />,
-    category: 'frontend'
-  },
-  {
-    name: 'TypeScript',
-    level: 90,
-    icon: <Code className="w-6 h-6" />,
-    category: 'frontend'
-  },
-  {
-    name: 'HTML/CSS',
-    level: 95,
-    icon: <Code className="w-6 h-6" />,
-    category: 'frontend'
-  },
-];
-
-const categories = [
-  { id: 'all', name: 'All', count: skills.length },
-  {
-    id: 'frontend',
-    name: 'Frontend',
-    count: skills.filter(skill => skill.category === 'frontend').length
-  },
-  {
-    id: 'backend',
-    name: 'Backend',
-    count: skills.filter(skill => skill.category === 'backend').length
-  },
-];
 
 export default function About() {
-  const [activeCategory, setActiveCategory] = useState('all');
-
-  const filteredSkills = activeCategory === 'all'
-    ? skills
-    : skills.filter(skill => skill.category === activeCategory);
-
-
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-black to-gray-900/50">
-      {/* 3D Background Elements */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl"></div>
@@ -181,7 +64,6 @@ export default function About() {
             I&apos;m a passionate <span className="text-white font-medium">Frontend Developer</span> specializing in building exceptional digital experiences. Currently, I&apos;m focused on creating accessible, human-centered products at{' '}performant web applications using modern technologies.
           </motion.p>
 
-          {/* 3D Floating Icons */}
           <div className="absolute -top-20 -right-20 w-40 h-40 opacity-20">
             <Globe className="w-full h-full text-blue-400 animate-float" />
           </div>
@@ -189,165 +71,142 @@ export default function About() {
             <CpuIcon className="w-full h-full text-purple-400 animate-float" style={{ animationDelay: '1s' }} />
           </div>
         </motion.div>
+        <GlareHover
+          glareColor="#ffffff"
+          glareOpacity={0.3}
+          glareAngle={-30}
+          glareSize={300}
+          transitionDuration={2000}
+          playOnce={false}
+        >
+          <div className="grid grid-cols-1 px-1 lg:px-10 lg:grid-cols-1 gap-12 items-start">
+            <div className="pt-20">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative h-full w-full bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm rounded-2xl border border-white/5 shadow-2xl overflow-hidden">
+                  <div className="flex p-6 flex-col">
+                    <div className="flex font-bold items-center">
+                      <HammerIcon className="w-6 h-6 mr-2 text-blue-400" />
+                      <BlurText
+                        text="Skills"
+                        delay={300}
+                        animateBy="letters"
+                        direction="bottom"
+                        className="text-6xl md:text-7xl mb-6 md:mb-8 inline-block bg-clip-text"
+                      />
+                    </div>
+                    {/* Skills Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
+                      {skills.map((skill, index) => {
+                        const Icon = skill.icon;
+                        // Generate a unique hue based on the skill name
+                        const hue = (skill.name.split('').reduce((a, b) => a + b.charCodeAt(0), 0) * 13) % 360;
+                        const bgColor = `hsla(${hue}, 70%, 50%, 0.15)`;
+                        const hoverBgColor = `hsla(${hue}, 70%, 50%, 0.25)`;
+                        const borderColor = `hsla(${hue}, 70%, 50%, 0.3)`;
+                        const textColor = `hsl(${hue}, 70%, 80%)`;
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side: Skills & Approach */}
-          <div className="space-y-8">
-            {/* Skills Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative h-96 w-full bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm rounded-2xl border border-white/5 shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 z-10 p-6 flex flex-col">
-                  <h2 className="text-4xl font-bold text-white mb-6">Dhanraj Singh</h2>
-                  <p className="text-gray-300 mb-8 max-w-2xl">
-                    A passionate Full Stack Developer with hands-on experience in modern web technologies.
-                    Completed B.Tech in Information Technology from JSS Noida.
-                  </p>
-
-                  {/* Category Filter */}
-                  <div className="flex flex-wrap gap-2 mb-4 z-20">
-                    {categories.map((category) => (
-                      <button
-                        key={category.id}
-                        onClick={() => setActiveCategory(category.id)}
-                        className={`px-4 py-2 text-sm rounded-full transition-all duration-300 ${activeCategory === category.id
-                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                          : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
-                          }`}
-                      >
-                        {category.name}
-                        <span className="ml-1 text-xs bg-white/10 px-2 py-0.5 rounded-full">
-                          {category.count}
-                        </span>
-                      </button>
-                    ))}
+                        return (
+                          <motion.div
+                            key={skill.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: 0.5,
+                              delay: index * 0.08,
+                              ease: [0.16, 1, 0.3, 1]
+                            }}
+                            style={{
+                              background: bgColor,
+                              border: `1px solid ${borderColor}`,
+                              '--hover-bg-color': hoverBgColor
+                            } as React.CSSProperties}
+                            className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:shadow-[0_0_15px_-3px_rgba(0,0,0,0.3)] hover:scale-105 hover:z-10"
+                            viewport={{ once: true }}
+                          >
+                            <motion.div
+                              className="mr-3"
+                              style={{ color: textColor }}
+                              initial={{ scale: 0.8, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              transition={{ delay: index * 0.08 + 0.2, duration: 0.5 }}
+                            >
+                              <Icon className="w-6 h-6" />
+                            </motion.div>
+                            <motion.span
+                              className="font-bold"
+                              style={{ color: textColor }}
+                              initial={{ x: -10, opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              transition={{ delay: index * 0.08 + 0.3, duration: 0.5 }}
+                            >
+                              {skill.name}
+                            </motion.span>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
+              </motion.div>
+            </div>
 
-                {/* 3D Skill Orbit */}
-                <div className="absolute inset-0 z-0">
-                  <SkillOrbit skills={filteredSkills} />
+            <div className="space-y-8">
+              {/* Experience */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm p-8 rounded-2xl border border-white/5 shadow-2xl"
+              >
+                <div className="text-2xl font-bold inline-flex justify-center items-center text-white mb-6">
+                  <Briefcase className="h-6 w-6 mr-2 text-blue-400" />
+                  <SplitText className="text-5xl md:text-7xl mb-6 md:mb-8 inline-block bg-clip-text" text="Experience" />
                 </div>
 
-                {/* Skill Legend */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent z-10">
-                  <div className="grid grid-cols-2 gap-4">
-                    {filteredSkills.slice(0, 4).map((skill) => (
-                      <div key={skill.name} className="flex items-center space-x-2">
-                        <div
-                          className="w-3 h-3 rounded-full"
-                          style={{
-                            background: `hsl(${Math.random() * 360}, 80%, 60%)`
-                          }}
-                        />
-                        <span className="text-sm text-gray-300">{skill.name}</span>
-                      </div>
-                    ))}
-                    {filteredSkills.length > 4 && (
-                      <div className="text-sm text-gray-500">+{filteredSkills.length - 4} more</div>
-                    )}
-                  </div>
+                <div className="space-y-8 relative">
+                  <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-purple-500/50 to-pink-500/20 -z-10"></div>
+
+                  {experiences.map((exp, index) => (
+                    <div key={index} className="relative pl-12">
+                      <div className="absolute left-5 w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 -ml-1.5"></div>
+                      <h4 className="text-lg font-semibold text-white">{exp.role}</h4>
+                      <p className="text-blue-400 font-mono text-sm mb-1">{exp.company} • {exp.period}</p>
+                      <p className="text-gray-400">{exp.description}</p>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* Floating Card: My Approach */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative h-64"
-            >
-              <div className="absolute inset-0 w-full h-full">
-                <Suspense fallback={null}>
-                  <Canvas camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 1000 }}>
-                    <ambientLight intensity={0.8} />
-                    <pointLight position={[10, 10, 10]} intensity={1.5} />
-                    <FloatingCard
-                      position={[0, 0, 0]}
-                      title="My Approach"
-                    >
-                      I believe in clean, maintainable code and user-centered design. My approach combines modern web technologies with performance optimization to deliver seamless experiences.
-                    </FloatingCard>
-                  </Canvas>
-                </Suspense>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Side: Experience & Education */}
-          <div className="space-y-8">
-            {/* Experience */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm p-8 rounded-2xl border border-white/5 shadow-2xl"
-            >
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Experience
-              </h3>
-
-              <div className="space-y-8 relative">
-                <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-purple-500/50 to-pink-500/20 -z-10"></div>
-
-                {[
-                  {
-                    role: 'Full Stack Intern',
-                    company: 'Data Peace',
-                    period: 'June 2025 - Present',
-                    description: 'Working on full-stack development projects, implementing modern web technologies, and contributing to production-level code.'
-                  },
-                  {
-                    role: 'Full Stack Intern',
-                    company: 'iSchoolConnect',
-                    period: 'April 2025 - 2025',
-                    description: 'Developed and maintained web applications, implemented features, and collaborated with the development team.'
-                  }
-                ].map((exp, index) => (
-                  <div key={index} className="relative pl-12">
-                    <div className="absolute left-5 w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 -ml-1.5"></div>
-                    <h4 className="text-lg font-semibold text-white">{exp.role}</h4>
-                    <p className="text-blue-400 font-mono text-sm mb-1">{exp.company} • {exp.period}</p>
-                    <p className="text-gray-400">{exp.description}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Education */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm p-8 rounded-2xl border border-white/5 shadow-2xl">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                </svg>
-                Education
-              </h3>
-
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-lg font-semibold text-white">B.Tech in Information Technology</h4>
-                  <p className="text-gray-400">J.S.S. Academy of Technical Education, Noida</p>
+              {/* Education */}
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm p-8 rounded-2xl border border-white/5 shadow-2xl">
+                <div className="text-2xl font-bold flex items-center text-white mb-6">
+                  <GraduationCap className="h-8 w-8 mr-3 text-blue-400" />
+                  <SplitText className="text-5xl md:text-7xl mb-6 md:mb-8 inline-block bg-clip-text" text="Education" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white">Class 10th & Class 12th</h4>
-                  <p className="text-gray-400">Carman School, Dehradun</p>
+
+                <div className="space-y-8 relative">
+                  <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-purple-500/50 to-pink-500/20 -z-10"></div>
+                  {education.map((edu, index) => (
+                    <div key={index} className="relative pl-12">
+                      <div className="absolute left-5 w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 -ml-1.5"></div>
+                      <h4 className="text-lg font-semibold text-white">{edu.degree}</h4>
+                      <p className="text-blue-400">{edu.institution}</p>
+                      <p className="text-sm text-gray-500 mt-1">{edu.period}</p>
+                      <p className="text-gray-400 text-sm mt-2">{edu.description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </GlareHover>
       </div>
 
       {/* Decorative elements */}
