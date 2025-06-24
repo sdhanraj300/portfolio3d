@@ -167,6 +167,7 @@ export default function Aurora({
 
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (geometry.attributes as any).uv;
     }
 
