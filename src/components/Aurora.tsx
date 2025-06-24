@@ -174,21 +174,33 @@ export default function Aurora({
     const mesh = new Mesh(gl, { geometry, program });
     ctn.appendChild(gl.canvas);
 
+    let startTime: number | null = null;
     let animateId = 0;
-    const update = (t: number) => {
+    
+    const update = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsedTime = timestamp - startTime;
+      
       animateId = requestAnimationFrame(update);
-      const time = propsRef.current.time ?? t * 0.01;
+      
+      // Calculate time in seconds with speed factor
       const speed = propsRef.current.speed ?? 1.0;
-      program.uniforms.uTime.value = time * speed * 0.1;
+      const time = (elapsedTime * 0.001) * speed;
+      
+      program.uniforms.uTime.value = time;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
       program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
+      
       const stops = propsRef.current.colorStops ?? colorStops;
       program.uniforms.uColorStops.value = stops.map((hex: string) => {
         const c = new Color(hex);
         return [c.r, c.g, c.b];
       });
+      
       renderer.render({ scene: mesh });
     };
+    
+    // Start the animation loop
     animateId = requestAnimationFrame(update);
 
     resize();
