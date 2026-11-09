@@ -51,7 +51,7 @@ export default function Navigation() {
               className="text-white font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Portfolio
+              Dhanraj Singh
             </Link>
           </motion.div>
           

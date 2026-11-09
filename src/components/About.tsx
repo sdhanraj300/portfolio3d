@@ -61,7 +61,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            I&apos;m a passionate <span className="text-white font-medium">Frontend Developer</span> specializing in building exceptional digital experiences. Currently, I&apos;m focused on creating accessible, human-centered products at{' '}performant web applications using modern technologies.
+            I&apos;m a <span className="text-white font-medium">Full-Stack Developer</span> based in Kiel, Germany, who enjoys turning complex problems into clean, performant products. I build end to end with TypeScript, Next.js, Node.js, and PostgreSQL, and I love shipping AI features that genuinely help people — from multilingual health chatbots to an AI resume co-pilot. Right now I&apos;m deepening my foundations with a Master&apos;s in Computer Science at CAU Kiel.
           </motion.p>
 
           <div className="absolute -top-20 -right-20 w-40 h-40 opacity-20">
@@ -179,6 +179,16 @@ export default function About() {
                       <h4 className="text-lg font-semibold text-white">{exp.role}</h4>
                       <p className="text-blue-400 font-mono text-sm mb-1">{exp.company} • {exp.period}</p>
                       <p className="text-gray-400">{exp.description}</p>
+                      {exp.highlights && exp.highlights.length > 0 && (
+                        <ul className="mt-3 space-y-2">
+                          {exp.highlights.map((highlight, i) => (
+                            <li key={i} className="flex items-start text-gray-400 text-sm leading-relaxed">
+                              <span className="mt-2 mr-3 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500"></span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -80,16 +80,24 @@ export default function Projects() {
                     >
                       <div className="relative w-full h-full flex items-center justify-center p-4">
                         <div className="relative w-full h-full">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-contain"
-                            onError={(e) => {
-                              console.error('Error loading image:', project.image, e);
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
+                          {project.image ? (
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-contain"
+                              onError={(e) => {
+                                console.error('Error loading image:', project.image, e);
+                                e.currentTarget.style.display = 'none';
+                              }}
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/25 via-purple-500/10 to-transparent">
+                              <span className="text-3xl md:text-4xl font-bold text-white/80 tracking-tight">
+                                {project.title}
+                              </span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </TiltedCard>

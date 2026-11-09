@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   longDescription: string;
   tags: string[];
-  image: string;
+  image?: string;
   github: string;
   demo: string;
   features: string[];

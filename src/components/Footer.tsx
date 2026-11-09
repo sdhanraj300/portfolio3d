@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Code2, Globe, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,22 +9,27 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: <Github size={20} />,
-      href: 'https://github.com/yourusername',
+      href: 'https://github.com/sdhanraj300',
       label: 'GitHub',
     },
     {
       icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/yourusername',
+      href: 'https://linkedin.com/in/sdhanraj300',
       label: 'LinkedIn',
     },
     {
-      icon: <Twitter size={20} />,
-      href: 'https://twitter.com/yourusername',
-      label: 'Twitter',
+      icon: <Code2 size={20} />,
+      href: 'https://leetcode.com/u/dhanraj02025/',
+      label: 'LeetCode',
+    },
+    {
+      icon: <Globe size={20} />,
+      href: 'https://portfoliodhanraj.vercel.app/',
+      label: 'Portfolio',
     },
     {
       icon: <Mail size={20} />,
-      href: 'mailto:your.email@example.com',
+      href: 'mailto:singhdhanraj.de@gmail.com',
       label: 'Email',
     },
   ];
@@ -43,7 +48,7 @@ export default function Footer() {
               Let&apos;s Work Together
             </h3>
             <p className="text-gray-400 mb-6 max-w-md">
-              I&apos;m always open to discussing product design work or partnership opportunities.
+              I&apos;m always open to discussing full-stack or AI engineering roles, product ideas, and freelance work.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -88,11 +93,11 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Legal</h4>
+              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Elsewhere</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                <li><a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Resume</a></li>
+                <li><a href="mailto:singhdhanraj.de@gmail.com" className="text-gray-400 hover:text-white transition-colors">Email</a></li>
+                <li><a href="https://github.com/sdhanraj300" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">GitHub</a></li>
               </ul>
             </div>
           </motion.div>
@@ -105,7 +110,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <p>© {currentYear} Your Name. All rights reserved.</p>
+          <p>© {currentYear} Dhanraj Singh. All rights reserved.</p>
           <p className="mt-2">Made with ❤️ using Next.js, Three.js, and Tailwind CSS</p>
         </motion.div>
       </div>

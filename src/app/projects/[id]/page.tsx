@@ -74,16 +74,18 @@ export default function ProjectDetails() {
       </div>
 
       {/* Project Gallery */}
-      <div className="relative w-full bg-gray-900/30 py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 text-center">Project Gallery</h2>
-            <div className="relative h-[600px] w-full rounded-2xl overflow-hidden bg-gray-800/30 backdrop-blur-sm">
-              <InfiniteMenu items={item2?.images} />
+      {item2?.images?.length ? (
+        <div className="relative w-full bg-gray-900/30 py-12">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold mb-8 text-center">Project Gallery</h2>
+              <div className="relative h-[600px] w-full rounded-2xl overflow-hidden bg-gray-800/30 backdrop-blur-sm">
+                <InfiniteMenu items={item2.images} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : null}
 
       {/* Project Details */}
       <div className="container mx-auto px-4 py-20">

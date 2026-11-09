@@ -58,7 +58,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            I build things for the web.
+            I build AI-powered products for the web.
           </motion.h2>
 
 
@@ -68,8 +68,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            I&apos;m a passionate <span className="text-white font-medium">Full-Stack Developer</span> specializing in building exceptional digital experiences. Currently, I&apos;m focused on creating accessible, human-centered products at{' '}
-            <a href="https://datapeace.in/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Data Peace. </a>
+            I&apos;m a passionate <span className="text-white font-medium">Full-Stack Developer</span> based in Kiel, Germany, specializing in AI-powered web applications with Next.js, TypeScript, and LangChain.js. Currently pursuing my Master&apos;s in Computer Science at{' '}
+            <span className="text-white font-medium">CAU Kiel</span> — previously engineering health and productivity products at{' '}
+            <a href="https://datapeace.in/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Data Peace.</a>
           </motion.p>
 
           <motion.div

@@ -44,10 +44,10 @@ export default function Contact() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Email Me</h3>
               <a
-                href="mailto:dhanraj02025@gmail.com"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
+                href="mailto:singhdhanraj.de@gmail.com"
+                className="text-blue-400 hover:text-blue-300 transition-colors break-all"
               >
-                dhanraj02025@gmail.com
+                singhdhanraj.de@gmail.com
               </a>
             </div>
 
@@ -57,10 +57,10 @@ export default function Contact() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Call Me</h3>
               <a
-                href="tel:+916386196872"
+                href="tel:+4915511050203"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
-                +91 63861 96872
+                +49 1551 1050203
               </a>
             </div>
 
@@ -69,7 +69,7 @@ export default function Contact() {
                 <MapPin className="text-pink-400" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-2">Location</h3>
-              <p className="text-gray-300">Noida, India</p>
+              <p className="text-gray-300">Kiel, Germany</p>
             </div>
           </motion.div>
 
